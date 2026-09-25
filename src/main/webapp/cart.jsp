@@ -11,14 +11,17 @@ Map<Integer,Integer> cart = (Map<Integer,Integer>) session.getAttribute("cart");
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Cart | Online Books Ordering</title>
-<link rel="stylesheet" href="css/book.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/book.css?v=2">
 </head>
 <body>
 <div class="navbar">
-    <a class="brand" href="menuServlet">Book Store</a>
-    <a href="menuServlet">Book Store</a>
-    <a href="viewOrders">My Orders</a>
-    <a href="logout">Logout</a>
+	<a class="brand" href="menuServlet">Book Store</a>
+        <nav class="nav-links" aria-label="Main navigation">
+        <a class="nav-link" href="menuServlet">Books</a>
+        <a class="nav-link active" href="viewCart" aria-current="page">My Cart</a>
+        <a class="nav-link" href="viewOrders">My Orders</a>
+        <a class="nav-link nav-logout" href="logout">Logout</a>
+    </nav>
 </div>
 <main class="page-shell">
     <section class="page-heading">
