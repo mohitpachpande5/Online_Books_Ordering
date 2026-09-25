@@ -1,5 +1,101 @@
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    color: #18212f;
+    background: #eef3f7;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 12px max(24px, calc((100% - 1120px) / 2));
+    color: #fff;
+    background: linear-gradient(135deg, #123047, #1f6f78);
+    box-shadow: 0 4px 16px rgba(18, 48, 71, 0.18);
+}
+
+.brand {
+    color: #fff;
+    font-size: 21px;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 9px 14px;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 160ms ease, color 160ms ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.nav-link.nav-logout {
+    margin-left: 6px;
+    color: #123047;
+    background: #fff;
+}
+
+.nav-link.nav-logout:hover {
+    background: #e8f1f3;
+}
+
+.page-shell {
+    width: min(100% - 48px, 1120px);
+    margin: 0 auto;
+    padding: 44px 0 64px;
+}
+
+.page-heading {
+    margin-bottom: 28px;
+}
+
+.page-heading > p {
+    margin: 0 0 8px;
+    color: #1f6f78;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.page-heading h1 {
+    margin: 0;
+    color: #123047;
+    font-size: clamp(30px, 4vw, 40px);
+    line-height: 1.15;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 22px;
+    align-items: stretch;
 }
 
 .book-card,
@@ -17,12 +113,12 @@
     display: flex;
     flex-direction: column;
     min-height: 260px;
+    transition: transform 160ms ease, box-shadow 160ms ease;
 }
 
 .book-card:hover,
 .order-card:hover {
     transform: translateY(-3px);
-    transition: transform 160ms ease, box-shadow 160ms ease;
     box-shadow: 0 18px 44px rgba(25, 42, 70, 0.14);
 }
 
@@ -135,8 +231,10 @@ td {
 
 @media (max-width: 640px) {
     .navbar {
-        justify-content: center;
+        align-items: flex-start;
         flex-wrap: wrap;
+        gap: 10px;
+        padding: 16px 20px;
     }
 
     .navbar .brand {
@@ -145,9 +243,29 @@ td {
         text-align: center;
     }
 
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .nav-link {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .nav-link.nav-logout {
+        margin-left: 0;
+    }
+
     .page-shell {
         width: min(100% - 24px, 1120px);
-        padding-top: 28px;
+        padding: 28px 0 48px;
+    }
+
+    .card-container {
+        grid-template-columns: 1fr;
     }
 
     .table-panel {
@@ -165,5 +283,11 @@ td {
 
     .primary-action {
         width: 100%;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
+    .card-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
